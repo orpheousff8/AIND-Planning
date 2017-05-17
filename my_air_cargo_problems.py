@@ -134,12 +134,17 @@ class AirCargoProblem(Problem):
         :return: list of Action objects
         """
         # TODO implement
+        """
         possible_actions = []
 
         kb = PropKB(decode_state(state, self.state_map).pos_sentence())
         for a in self.actions_list:
             if a.check_precond(kb, a.args):
                 possible_actions.append(a)
+        """
+
+        kb = PropKB(decode_state(state, self.state_map).pos_sentence())
+        possible_actions = [a for a in self.actions_list if a.check_precond(kb, a.args)]
 
         return possible_actions
 
